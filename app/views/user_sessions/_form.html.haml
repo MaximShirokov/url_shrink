@@ -1,0 +1,14 @@
+.signup-form
+  = form_tag user_sessions_path, method: :post do
+    %h2 Sign In
+    .form-group
+      = text_field_tag :email, nil, class: 'form-control', placeholder: "Email Address", required: "required"
+    .form-group
+      = password_field_tag :password, nil, class: 'form-control', placeholder: "Password", required: "required"
+
+    .form-group
+      = submit_tag 'Sign in', class: 'btn btn-primary btn-lg'
+
+  .text-center
+    Don't have an account?
+    = link_to 'Sign up here', sign_up_path

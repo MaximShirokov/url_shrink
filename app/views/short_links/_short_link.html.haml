@@ -1,0 +1,6 @@
+.alert.alert-success
+  Your shortened URL is:
+  %p.new-short-link= "#{link_to(nil, short_link_url(short_link.short_code), target: '_blank')}".html_safe
+  %hr/
+  Stats for shortened URL:
+  %p.new-short-link= "#{link_to(nil, short_link_stats_url(short_link.short_code), target: '_blank')}".html_safe

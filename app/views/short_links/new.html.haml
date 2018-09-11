@@ -1,0 +1,11 @@
+.startpage-logo.text-center
+  %h1 Url Shrink
+.startpage-form.text-center
+  = form_for @short_link, remote: true do |f|
+    .form-group
+      = f.text_field :original_link, placeholder: 'Input link', required: 'required', class: 'form-control startpage-shorten'
+      = f.number_field :expire_at, placeholder: 'Input expire time in secs', class: 'form-control startpage-shorten'
+      .btn-group
+        = f.submit 'Shorten', class: 'btn btn-primary submit-create-short-link-form'
+
+  .new-short-link-container

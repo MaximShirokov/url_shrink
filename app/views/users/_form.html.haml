@@ -1,0 +1,22 @@
+.signup-form
+  = form_for(@user) do |f|
+    - if @user.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@user.errors.count, "error")
+          prohibited this user from being saved:
+        %ul
+          - @user.errors.full_messages.each do |message|
+            %li= message
+    %h2 Sign Up
+    .form-group
+      = f.text_field :email, class: 'form-control', placeholder: "Email Address", required: "required"
+    .form-group
+      = f.password_field :password, class: 'form-control', placeholder: "Password", required: "required"
+    .form-group
+      = f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirm Password",  required: "required"
+    .form-group
+      = f.submit 'Sign up', class: 'btn btn-primary btn-lg'
+  .text-center
+    Already have an account?
+    = link_to 'Login here', sign_in_path
