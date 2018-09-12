@@ -2,7 +2,7 @@ class ShortLinkStatsController < ApplicationController
   before_action :set_short_link
 
   def show
-    @stats = ShortLink::Stats.new(short_link: @short_link).call()
+    @stats = Cmd::ShortLink::Stats.run(short_link: @short_link).result
   end
 
   private

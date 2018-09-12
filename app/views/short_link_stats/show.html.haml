@@ -1,0 +1,12 @@
+%table.table
+  %thead
+    %tr
+      %th{:scope => "col"} Date
+      %th{:scope => "col"} Count
+      %th{:scope => "col"} Device
+      %th{:scope => "col"} Browser
+  %tbody
+    - @stats.each do |stat|
+      %tr
+        - stat.each do |_, value|
+          %td= value
