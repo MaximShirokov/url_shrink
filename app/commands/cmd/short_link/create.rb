@@ -11,7 +11,7 @@ class Cmd::ShortLink::Create < Cmd::Base
 
   def execute
     short_link = ShortLink.create!(
-      original_link: original_link,
+      original_link: original_link_with_http_protocol,
       user: user,
       short_code: short_code,
       start_at: start_at,
@@ -24,6 +24,14 @@ class Cmd::ShortLink::Create < Cmd::Base
   end
 
   private
+
+  def original_link_with_http_protocol
+    if original_link[/\Ahttp:\/\//] || original_link[/\Ahttps:\/\//]
+      original_link
+    else
+      "http://#{original_link}"
+    end
+  end
 
   def short_code
     [("a".."z").to_a, ("A".."Z").to_a, ("0".."9").to_a].flatten.sort_by { rand }[0, 5].join

@@ -8,7 +8,7 @@ class Cmd::ShortLinkTransition::Create < Cmd::Base
   def execute
     ::ShortLinkTransition.create!(
       browser: browser.name,
-      device:browser.device.name,
+      device: browser.device.name,
       short_link: short_link
     )
   end

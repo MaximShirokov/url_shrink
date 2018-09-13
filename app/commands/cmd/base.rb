@@ -5,7 +5,6 @@ class Cmd::Base < ActiveInteraction::Base
 
   def validate!(condition, errors_hash)
     if Rails.env.development? || Rails.env.test?
-      # NOTE: raise I18n translation error in dev or test mode
       errors.messages
     end
     unless condition

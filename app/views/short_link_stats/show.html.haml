@@ -1,12 +1,18 @@
-%table.table
-  %thead
-    %tr
-      %th{:scope => "col"} Date
-      %th{:scope => "col"} Count
-      %th{:scope => "col"} Device
-      %th{:scope => "col"} Browser
-  %tbody
-    - @stats.each do |stat|
+- if @stats.any?
+  %table.table
+    %thead
       %tr
-        - stat.each do |_, value|
-          %td= value
+        %th{:scope => "col"} Date
+        %th{:scope => "col"} Count
+        %th{:scope => "col"} Device
+        %th{:scope => "col"} Browser
+    %tbody
+      - @stats.each do |stat|
+        %tr
+          - stat.each do |key, value|
+            - if key == 'date'
+              %td= date_format(value, '%d/%m/%Y')
+            - else
+              %td= value
+- else
+  %h1 Stats is empty
