@@ -3,6 +3,8 @@
     %ul.navbar-nav.mr-auto
       - if current_user
         %li.nav-item
+          = link_to 'Home', root_path, class: 'nav-link'
+        %li.nav-item
           = link_to current_user.email, nil, class: 'nav-link'
         %li.nav-item
           = link_to 'Sign out', sign_out_path, class: 'nav-link', method: :delete
